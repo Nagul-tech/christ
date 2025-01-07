@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Christian Music Studio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo h1 {
+    margin-left: 20px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin-right: 20px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Section Styles */
+section {
+    padding: 50px 20px;
+    margin-bottom: 20px;
+}
+
+.section-home {
+    background-color: #ffe1a8;
+    text-align: center;
+}
+
+.section-about, .section-music, .section-contact {
+    background-color: #fff;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    text-align: center;
+    color: #555;
+}
+
+/* Music Gallery */
+.music-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.music-item {
+    text-align: center;
+}
+
+.music-item audio {
+    margin-top: 10px;
+}
+
+/* Contact Form */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#contact-form label {
+    margin-bottom: 5px;
+}
+
+#contact-form input, #contact-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+#contact-form button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#contact-form button:hover {
+    background-color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+</style>
+
+<script>
+        // Play music when the button is clicked
+function playMusic() {
+    var audioPlayer = document.getElementById('audio-player');
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+    } else {
+        audioPlayer.pause();
+    }
+}
+
+// Handle contact form submission
+function submitForm(event) {
+    event.preventDefault(); // Prevents the form from submitting normally
+
+    // Get the form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    // Simple validation (basic example)
+    if (name && email && message) {
+        document.getElementById('form-response').textContent = 'Thank you for your message, ' + name + '!';
+        document.getElementById('form-response').style.color = 'green';
+
+        // Reset form fields
+        document.getElementById('contact-form').reset();
+    } else {
+        document.getElementById('form-response').textContent = 'Please fill out all fields.';
+        document.getElementById('form-response').style.color = 'red';
+    }
+}
+
+
+</script>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>Christian Music Studio</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="section-home">
+        <h2>Welcome to the Christian Music Studio</h2>
+        <p>Creating soul-stirring music for the glory of God.</p>
+        <button onclick="playMusic()">Play Music</button>
+        <audio id="audio-player" controls>
+            <source src="audio/your-song.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </section>
+
+    <section id="about" class="section-about">
+        <h2>About Us</h2>
+        <p>We are a studio dedicated to producing inspiring Christian music. Our goal is to spread faith through melodies and lyrics.</p>
+    </section>
+
+    <section id="music" class="section-music">
+        <h2>Our Music</h2>
+        <div class="music-gallery">
+            <div class="music-item">
+                <h3>Song Title 1</h3>
+                <audio controls>
+                    <source src="audio/your-song-1.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <div class="music-item">
+                <h3>Song Title 2</h3>
+                <audio controls>
+                    <source src="audio/your-song-2.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-contact">
+        <h2>Contact Us</h2>
+        <form id="contact-form" onsubmit="submitForm(event)">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" required>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <p id="form-response"></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Christian Music Studio. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
